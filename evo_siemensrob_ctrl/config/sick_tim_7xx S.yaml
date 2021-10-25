@@ -1,0 +1,8 @@
+sick_scan2_tim_7xxS:
+  ros__parameters:
+    hostname : "192.168.1.24"
+    frame_id : "base_scan"
+    scanner_name : "sick_tim_781S"
+    port : 2113
+    min_ang : -2.35619449
+    max_ang : 2.35619449

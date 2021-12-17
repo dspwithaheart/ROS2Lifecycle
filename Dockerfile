@@ -133,8 +133,11 @@ WORKDIR /root
 
 #for automatic launch when container gets startet 
 # CMD . /opt/ros/foxy/setup.sh && . /root/colcon_ws/install/setup.sh && ros2 launch evo_siemensrob_ctrl agv_control_launch.py
-
-CMD nginx && . /opt/ros/foxy/setup.sh && . /root/colcon_ws/install/setup.sh && npm install ros2-web-bridge && node node_modules/ros2-web-bridge/bin/rosbridge.js 
+# RUN ros2 launch evo_siemensrob_ctrl agv_control_launch.py &
+COPY ./dockerfile_startup.sh dockerfile_startup.sh
+RUN ["chmod", "+x", "./dockerfile_startup.sh"]
+CMD ./dockerfile_startup.sh
+# CMD nginx && . /opt/ros/foxy/setup.sh && . /root/colcon_ws/install/setup.sh && npm install ros2-web-bridge && node node_modules/ros2-web-bridge/bin/rosbridge.js 
 # && ros2 launch evo_siemensrob_ctrl agv_control_launch.py 
 # && nginx -g daemon off
 
